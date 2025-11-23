@@ -73,7 +73,7 @@
                 <p class="text-xs text-yellow-400 font-bold tracking-wide ml-8">Diagnostic Profiling & Strategy Engine</p>
             </div>
             <div class="flex gap-3">
-                <!-- NEW: Google Drive Link Button -->
+                <!-- Google Drive Link Button -->
                 <a href="https://docs.google.com/spreadsheets/d/1c5dQUYjACIpG3kuHue6sspmyizYNveV12ZNZJW_Gh6o/edit?usp=drive_link" target="_blank" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-xs font-bold uppercase transition shadow-sm flex items-center gap-2 text-white border border-blue-400">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.01 1.485c2.082 0 3.754.02 4.943.02h.007c.53 0 .935.004 1.174.006.22.002.6.006.973.06a3.916 3.916 0 0 1 2.27 1.09 3.916 3.916 0 0 1 1.09 2.27c.054.373.058.753.06 .973.002.24.006.644.006 1.174v.007c0 1.19.02 2.861.02 4.943 0 2.082-.02 3.754-.02 4.943v.007c0 .53-.004.935-.006 1.174-.002.22-.006.6-.06.973a3.916 3.916 0 0 1-1.09 2.27 3.916 3.916 0 0 1-2.27 1.09c-.373.054-.753.058-.973.06-.24.002-.644-.006-1.174.006h-.007c-1.19 0-2.861-.02-4.943-.02-2.082 0-3.754.02-4.943.02h-.007c-.53 0-.935-.004-1.174-.006-.22-.002-.6-.006-.973-.06a3.916 3.916 0 0 1-2.27-1.09 3.916 3.916 0 0 1-1.09-2.27c-.054-.373-.058-.753-.06-.973-.002-.24-.006-.644-.006-1.174v-.007c0-1.19-.02-2.861-.02-4.943 0-2.082.02-3.754.02-4.943v-.007c0-.53.004-.935.006-1.174.002-.22.006-.6.06-.973a3.916 3.916 0 0 1 1.09-2.27 3.916 3.916 0 0 1 2.27-1.09c.373-.054.753-.058.973-.06.24-.002.644-.006 1.174-.006h.007ZM7.5 16.5l3-5.196 3 5.196H7.5Zm9-1.5L13.5 9.804l3-5.196 3 5.196-3 5.196ZM6 13.5l3-5.196L6 3.108 3 8.304l3 5.196Z"/></svg>
                     Open Data Sheet
@@ -186,12 +186,26 @@
             </section>
         </div>
 
-        <!-- NEW: Weekly Action Generator Section -->
-        <section id="action-plan-section" class="bg-emerald-900 rounded-xl shadow-xl p-6 text-white animate-fade-in hidden">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <!-- NEW: Weekly Action Generator Section (LOCKED) -->
+        <section id="action-plan-section" class="bg-emerald-900 rounded-xl shadow-xl p-6 text-white animate-fade-in hidden relative overflow-hidden">
+            
+            <!-- LOCKED OVERLAY -->
+            <div id="locked-overlay" class="absolute inset-0 z-10 bg-emerald-900 bg-opacity-95 flex flex-col items-center justify-center p-6 text-center">
+                <svg class="w-12 h-12 text-yellow-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                <h3 class="text-xl font-bold text-white mb-2">Restricted Access</h3>
+                <p class="text-sm text-emerald-200 mb-4">This section contains sensitive reporting tools for SLT/Pastoral Leads only.</p>
+                <div class="flex gap-2">
+                    <input type="password" id="password-input" placeholder="Enter Access Code" class="text-emerald-900 px-3 py-2 rounded text-sm font-bold w-48 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <button onclick="unlockReports()" class="bg-yellow-500 hover:bg-yellow-600 text-emerald-900 font-bold px-4 py-2 rounded text-sm transition">Unlock</button>
+                </div>
+                <p id="password-error" class="text-red-400 text-xs mt-2 hidden">Incorrect access code.</p>
+            </div>
+
+            <!-- HIDDEN CONTENT -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 blur-sm transition-all duration-500" id="action-content">
                 <div>
                     <h2 class="text-xl font-bold flex items-center gap-2">
-                        <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 00-2-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
                         Reporting & Action Tools
                     </h2>
                     <p class="text-sm text-emerald-200 mt-1">Generate targeted reports for staff, SLT, and tracking.</p>
@@ -290,7 +304,7 @@
                     <div class="lg:col-span-8 p-6 md:p-8 bg-white">
                         
                         <!-- AI FEATURE: Gemini Integration -->
-                        <div class="mb-8">
+                        <div class="mb-8 hidden" id="ai-feature-container">
                             <div class="flex justify-between items-center mb-4">
                                 <h3 class="font-bold text-emerald-900 uppercase text-xs tracking-wider flex items-center gap-2">
                                     <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -370,6 +384,43 @@
         let chartInstance = null;
         let recentActiveDates = [];
 
+        // NEW: Pastoral Structure & Initials Map (3-Letter Codes)
+        const STAFF_INITIALS_MAP = {
+            "B JASTRZAB": "BJA", "L DOORLY": "LDO", "G BRIODY": "GBR", "I ABSHIR": "IAB", 
+            "T SLAVOVA": "TSL", "E GALGEY": "EGA", "K KING": "KKI", "J NEVILLE": "JNE", 
+            "E OFORI": "EOF", "A CONWAY": "ACO", "K KRENC": "KKR", "U KAYA": "UKA", 
+            "Y ABBEY-ATTRAM": "YAB", "C MAURIS-BLANC": "CMA", "C EMELE": "CEM", 
+            "S KISTEN": "SKI", "E BUDE": "EBU", "E TOPRAK": "ETO", "L TOWLER": "LTO", 
+            "A SACKS": "ASA", "S KARA": "SKA"
+        };
+
+        // Helper to get initials or generate from name (3-letter logic)
+        function getStaffInitials(name) {
+            if (!name) return "--";
+            const upperName = name.toUpperCase();
+            // Check map first
+            for (const [fullName, init] of Object.entries(STAFF_INITIALS_MAP)) {
+                if (upperName.includes(fullName)) return init;
+            }
+            // Fallback: First letter of first name + First 2 letters of surname
+            const parts = name.split(' ');
+            if (parts.length >= 2) {
+                const first = parts[0][0];
+                const last = parts[1].substring(0, 2);
+                return (first + last).toUpperCase();
+            }
+            return name.substring(0, 3).toUpperCase();
+        }
+
+        // Helper to get Week Number
+        function getWeekNumber(d) {
+            d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+            var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+            var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+            return weekNo;
+        }
+
         // Linked SEN Provision Database
         const SEN_PROVISIONS_DB = {
             "Abdus Samad Sarwar": [
@@ -387,6 +438,23 @@
                 "Monitor Attendance (Target: 100%)"
             ]
         };
+
+        const DIAGNOSIS_MAP = {
+            organisation: ['late', 'equipment', 'homework', 'uniform', 'planner', 'coat', 'jewellery', 'pe kit'],
+            disruption:   ['chat', 'talk', 'noise', 'disrupt', 'shout', 'call out', 'task', 'distract', 'eating', 'mobile', 'poor attitude'],
+            defiance:     ['defian', 'refus', 'rude', 'arguing', 'instruction', 'walk away', 'attitude', 'fail'],
+            safety:       ['fight', 'phys', 'aggress', 'violent', 'danger', 'safe', 'on call', 'truan', 'abscond', 'bully']
+        };
+        
+        const STRATEGIES = {
+            "Safety & Regulation": ["Immediate removal to safe space if escalated.", "Implement a 'Cool-off' card system.", "Risk assessment required for practical lessons.", "Seating plan: Keep near door/teacher desk.", "Restorative conversation post-event is critical."],
+            "Respect & Cooperation": ["Avoid public confrontation; use corridor conversations.", "Give 'take up time' after instructions.", "Use 'Maybe... and...' language to de-escalate.", "Check for underlying unmet needs (hunger, tiredness).", "Positive phone call home for small wins."],
+            "Engagement & Focus": ["Chunk tasks into 10-minute segments.", "Use non-verbal cues to redirect (tap on desk).", "Provide a fidget aid or movement break.", "Seat away from high-distraction peers.", "Use 'praise the prox' (praise students nearby)."],
+            "Organisation": ["Visual timetable on desk.", "Equipment check at door (provide quietly if missing).", "Scaffold homework tasks clearly.", "Regular locker/planner checks."],
+            "General Behaviour": ["Consistency with school policy.", "Build relationship through non-academic talk.", "Reinforce positive routines."],
+            "SEN_ADD": ["Pre-teach key vocabulary.", "Use dual coding (visuals + text).", "Check understanding: 'Tell me what you need to do'."]
+        };
+
         // ================= SECURITY FUNCTIONS =================
         function unlockReports() {
             const pass = document.getElementById('password-input').value;
@@ -462,7 +530,7 @@
 
         // ================= NEW REPORTING FUNCTIONS =================
         
-        // 1. Weekly Bulletin
+        // 1. Weekly Bulletin (Updated: Year Group Analysis + Strategies)
         function generateWeeklyBulletin() {
             if (!window.jspdf) { alert("PDF library not loaded."); return; }
             const { jsPDF } = window.jspdf;
@@ -474,25 +542,56 @@
             doc.text("Weekly Staff Bulletin", 14, 17);
             doc.setFontSize(10); doc.text(dateText, 170, 17);
 
-            // Mocked High Level Stats (Logic could be deeper)
+            // Stats
             let totalWeek = 0;
-            let onCalls = 0;
+            const recentSet = new Set(recentActiveDates);
+            const yearStats = {}; // Store stats per year group
+
             Object.values(studentData).forEach(s => {
-                const rec = s.incidents.filter(i => i.date >= new Date(recentActiveDates[recentActiveDates.length-1]));
-                totalWeek += rec.length;
-                onCalls += rec.filter(i => i.type.includes('On Call')).length;
+                const rec = s.incidents.filter(i => recentSet.has(i.date.setHours(0,0,0,0)));
+                if (rec.length > 0) {
+                    totalWeek += rec.length;
+                    if (!yearStats[s.year]) yearStats[s.year] = { count: 0, types: {} };
+                    yearStats[s.year].count += rec.length;
+                    rec.forEach(i => yearStats[s.year].types[i.type] = (yearStats[s.year].types[i.type] || 0) + 1);
+                }
             });
 
             let y = 40;
-            doc.setTextColor(0); doc.setFontSize(14); doc.text("The Big Picture", 14, y);
-            y+=8;
-            doc.setFontSize(11); doc.setFont(undefined, 'normal');
-            doc.text(`This week there were ${totalWeek} total incidents and ${onCalls} On Calls.`, 14, y);
-            y+=8;
-            doc.text(`Focus is needed on consistent recording of 'Equipment Missing'.`, 14, y);
-            y+=15;
+            doc.setTextColor(0); doc.setFontSize(14); doc.text("1. Year Group Focus & Strategies", 14, y);
+            y += 8;
 
-            // Hotspot from heatmap logic (simplified for bulletin)
+            // Generate Year Group Analysis Rows
+            const yearRows = [];
+            ["7", "8", "9", "10", "11"].forEach(yr => {
+                const stats = yearStats[yr];
+                if (stats) {
+                    // Find Top Issue
+                    const topIssue = Object.entries(stats.types).sort((a,b) => b[1]-a[1])[0][0];
+                    const category = diagnose(topIssue);
+                    // Get Strategy based on category (picking first one for brevity)
+                    const strategy = STRATEGIES[category] ? STRATEGIES[category][0] : "Reinforce positive routines.";
+                    
+                    yearRows.push([
+                        `Year ${yr}`, 
+                        topIssue, 
+                        strategy
+                    ]);
+                }
+            });
+
+            doc.autoTable({
+                startY: y,
+                head: [['Year', 'Primary Issue', 'Suggested Strategy for Classrooms']],
+                body: yearRows,
+                theme: 'grid',
+                headStyles: { fillColor: [6, 78, 59] },
+                columnStyles: { 0: { fontStyle: 'bold', cellWidth: 20 }, 2: { cellWidth: 'auto' } },
+                styles: { fontSize: 10, cellPadding: 3 }
+            });
+            y = doc.lastAutoTable.finalY + 15;
+
+            // Hotspot Analysis (Simplified)
             let maxP = 0, maxD = 0, maxVal = 0;
             [1,2,3,4,5,6].forEach(p => {
                 [1,2,3,4,5].forEach(d => {
@@ -500,20 +599,17 @@
                 });
             });
             const days = ["", "Mon", "Tue", "Wed", "Thu", "Fri"];
-            doc.setFont(undefined, 'bold'); doc.text(`🔥 Hotspot Alert: ${days[maxD]} Period ${maxP}`, 14, y);
-            y+=15;
-
-            // Strategy of the Week
-            doc.setFillColor(236, 253, 245); doc.rect(14, y, 182, 30, 'F');
-            doc.setTextColor(6, 78, 59); doc.setFontSize(12); doc.text("Strategy of the Week: 'Take Up Time'", 18, y+10);
-            doc.setFontSize(10); doc.setTextColor(0);
-            doc.text("Give an instruction and walk away. Allow the student time to process", 18, y+18);
-            doc.text("and comply without losing face. Do not hover.", 18, y+23);
+            
+            doc.setFontSize(14); doc.text("2. Hotspot Alert", 14, y);
+            y += 8;
+            doc.setFontSize(11); doc.setFont(undefined, 'normal');
+            doc.text(`The busiest time this week was ${days[maxD]} Period ${maxP}.`, 14, y);
+            doc.text(`Please ensure high visibility and meet-and-greet during this time.`, 14, y+6);
 
             doc.save(`Staff_Bulletin_${dateText}.pdf`);
         }
 
-        // 2. SLT Strategic Report
+        // 2. SLT Strategic Report (Updated: Key Students/Staff/Classes)
         function generateSLTReport() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -522,61 +618,106 @@
             doc.setFontSize(18); doc.text("SLT Strategic Behaviour Overview", 14, 20);
             doc.setFontSize(10); doc.text(`Generated: ${new Date().toLocaleDateString()}`, 14, 26);
 
-            // Data Prep
-            let totalOnCalls = 0;
-            let exclusionRiskCount = 0;
-            const deptCounts = {};
-            
-            Object.values(studentData).forEach(s => {
-                const rec = s.incidents.filter(i => i.date >= new Date(recentActiveDates[recentActiveDates.length-1]));
-                if (rec.length > 10) exclusionRiskCount++; // Arbitrary risk threshold
-                
-                rec.forEach(i => {
-                    if(i.type.includes('On Call')) totalOnCalls++;
-                    // Rough heuristic for department from existing data structure if available
-                    // If not, skip dept analysis or mock it
+            let y = 40;
+
+            // 1. Key Students per Year Group (Top 3)
+            doc.setFontSize(14); doc.text("1. Key Students of Concern (Top 3 per Year)", 14, y);
+            y += 8;
+
+            const recentSet = new Set(recentActiveDates);
+            const studentStats = Object.values(studentData).map(s => {
+                const recentIncidents = s.incidents.filter(i => recentSet.has(i.date.setHours(0,0,0,0)));
+                return { ...s, recentCount: recentIncidents.length };
+            }).filter(s => s.recentCount > 0).sort((a,b) => b.recentCount - a.recentCount);
+
+            const keyStudentRows = [];
+            ["7", "8", "9", "10", "11"].forEach(yr => {
+                const top3 = studentStats.filter(s => s.year === yr).slice(0, 3);
+                top3.forEach(s => {
+                    keyStudentRows.push([`Year ${yr}`, s.name, s.reg, s.recentCount]);
                 });
             });
 
-            let y = 40;
-            doc.setFontSize(14); doc.text("1. High Level Metrics", 14, y);
-            y+=10;
-            doc.setFontSize(11);
-            doc.text(`Total On-Calls (This Week): ${totalOnCalls}`, 14, y); y+=8;
-            doc.text(`Students at Risk of Exclusion (>10 pts/week): ${exclusionRiskCount}`, 14, y); y+=15;
+            doc.autoTable({
+                startY: y,
+                head: [['Year', 'Student', 'Form', 'Incidents (Last 5 Days)']],
+                body: keyStudentRows,
+                theme: 'striped',
+                headStyles: { fillColor: [126, 34, 206] }, // Purple
+                styles: { fontSize: 9 }
+            });
+            y = doc.lastAutoTable.finalY + 15;
 
-            doc.setFontSize(14); doc.text("2. Strategic Actions & Updates", 14, y);
-            y+=10;
-            doc.setLineWidth(0.1); doc.rect(14, y, 180, 40);
-            doc.text("Enter agreed actions here during SLT meeting:", 16, y+8);
+            // 2. Hotspot Analysis (Classes & Teachers)
+            doc.setFontSize(14); doc.text("2. Hotspot Analysis: Key Classes & Staff", 14, y);
+            y += 8;
+
+            const topClasses = Object.entries(onCallStats.groups).sort((a,b) => b[1]-a[1]).slice(0, 5);
+            const topStaff = Object.entries(onCallStats.teachers).sort((a,b) => b[1]-a[1]).slice(0, 5);
+
+            const classRows = topClasses.map(([cls, count]) => [cls, count, "High On-Call/Removal Rate"]);
             
+            doc.autoTable({
+                startY: y,
+                head: [['Class/Group', 'On-Call Count', 'Concern Type']],
+                body: classRows,
+                theme: 'plain',
+                headStyles: { fillColor: [220, 38, 38] }, // Red
+                styles: { fontSize: 9 }
+            });
+            y = doc.lastAutoTable.finalY + 10;
+
+            doc.setFontSize(12); doc.text("Top Staff Requiring Support (Based on On-Calls)", 14, y);
+            y += 6;
+            
+            const staffRows = topStaff.map(([stf, count]) => [stf, count]);
+             doc.autoTable({
+                startY: y,
+                head: [['Staff Member', 'On-Calls Logged']],
+                body: staffRows,
+                theme: 'plain',
+                headStyles: { fillColor: [75, 85, 99] }, // Gray
+                styles: { fontSize: 9 }
+            });
+
             doc.save(`SLT_Report_${new Date().toISOString().split('T')[0]}.pdf`);
         }
 
-        // 3. Export Action Tracker (CSV)
+        // 3. Export Action Tracker (CSV) - UPDATED for Google Sheets
         function exportActionTracker() {
             const studentStats = getStudentStatsForActions();
             const assignedStudents = new Set();
             const csvRows = [];
-            
-            // Headers
-            csvRows.push(["Date", "Role", "Student Name", "Form", "Incident Count", "Primary Issue", "Suggested Action", "Status", "Notes"]);
-            const dateStr = new Date().toLocaleDateString();
+            const today = new Date();
+            const weekNum = getWeekNumber(today);
+            const dateStr = today.toLocaleDateString();
+
+            // Enhanced Headers for Google Sheets Tracking
+            csvRows.push(["Week_Num", "Date_Generated", "Role_Type", "Staff_Initials", "Student_Name", "Form", "Incident_Count", "Primary_Issue", "Suggested_Action", "Status", "Completion_Date", "Notes"]);
 
             // Logic mirrors the Action PDF hierarchy
-            // A. SLT
+            
+            // A. SLT (Assistant Heads)
+            // Updated 3-letter codes
+            const sltLeads = { "7": "GBR", "8": "EGA", "9": "EGA", "10": "CMA", "11": "SKI", "12": "CMA", "13": "CMA" }; 
+
             studentStats.slice(0, 5).forEach(s => {
                 assignedStudents.add(s.name);
-                csvRows.push([dateStr, "Assistant Head", s.name, s.reg, s.recentCount, s.topIssue, "Review Exclusion Risk", "", ""]);
+                const staffInit = sltLeads[s.year] || "SLT";
+                csvRows.push([weekNum, dateStr, "Assistant Head", staffInit, s.name, s.reg, s.recentCount, s.topIssue, "Review Exclusion Risk", "Pending", "", ""]);
             });
 
-            // B. HOY
+            // B. HOY (Heads of Year)
+            // Updated 3-letter codes
+            const hoyLeads = { "7": "BJA", "8": "EGA", "9": "GBR", "10": "UKA", "11": "SKI", "12": "CMA", "13": "CMA" }; 
+
             const years = ["7", "8", "9", "10", "11"];
             years.forEach(y => {
                 const yearStudents = studentStats.filter(s => s.year === y && s.recentCount > 5 && !assignedStudents.has(s.name)).slice(0, 3);
                 yearStudents.forEach(s => {
                     assignedStudents.add(s.name);
-                    csvRows.push([dateStr, "Head of Year", s.name, s.reg, s.recentCount, s.topIssue, `Red Report - Target: ${suggestTarget(s.issueCat)}`, "", ""]);
+                    const staffInit = hoyLeads[y] || "HOY";
+                    csvRows.push([weekNum, dateStr, "Head of Year", staffInit, s.name, s.reg, s.recentCount, s.topIssue, `Red Report - Focus: ${suggestTarget(s.issueCat)}`, "Pending", "", ""]);
                 });
             });
 
@@ -584,8 +725,20 @@
             const forms = [...new Set(studentStats.map(s => s.reg))].sort();
             forms.forEach(f => {
                 const students = studentStats.filter(s => s.reg === f && s.recentCount > 2 && !assignedStudents.has(s.name)).slice(0, 3);
+                
+                // Updated 3-letter codes for tutor map placeholders
+                const tutorMap = {
+                    "7B": "LDO", "7F": "IAB", "7T": "TSL",
+                    "8B": "KKI", "8F": "JNE", "8T": "EOF",
+                    "9B": "ACO", "9F": "KKR",
+                    "10B": "YAB", "10F": "CEM",
+                    "11B": "LDO", "11F": "EBU", "11T": "ETO",
+                    "12B": "LTO", "13B": "ASA", "13F": "SKA"
+                };
+                let tutorInit = tutorMap[f] || "Tutor";
+
                 students.forEach(s => {
-                    csvRows.push([dateStr, "Form Tutor", s.name, s.reg, s.recentCount, s.topIssue, `Green Report - Target: ${suggestTarget(s.issueCat)}`, "", ""]);
+                    csvRows.push([weekNum, dateStr, "Form Tutor", tutorInit, s.name, s.reg, s.recentCount, s.topIssue, `Green Report - Focus: ${suggestTarget(s.issueCat)}`, "Pending", "", ""]);
                 });
             });
 
@@ -594,10 +747,13 @@
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `Action_Tracker_${new Date().toISOString().split('T')[0]}.csv`);
+            link.setAttribute("download", `Pastoral_Tracker_Week_${weekNum}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+
+            // User Advice Alert
+            alert("File Downloaded: Pastoral_Tracker_Week_" + weekNum + ".csv\n\nTip for Google Sheets:\n1. Create a new Google Sheet named 'Master Pastoral Tracker'.\n2. Go to File > Import > Upload.\n3. Select this CSV file.\n4. Choose 'Append to current sheet' to keep a history of all weeks.");
         }
 
         // Helper to reuse the filtering logic
@@ -1162,10 +1318,11 @@
             let html = `<div class="mb-4 text-xs text-slate-500 font-mono">Active Dates: ${dateList}</div><div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden"><table class="min-w-full text-sm"><thead class="bg-red-50 border-b border-red-100 text-red-900 uppercase text-xs font-bold"><tr><th class="px-6 py-3 text-left">Student Name</th><th class="px-6 py-3 text-left">Primary Issue</th><th class="px-6 py-3 text-center">Total Events</th><th class="px-6 py-3 text-center">On Call, count</th><th class="px-6 py-3 text-center">Physical Altercation, count</th><th class="px-6 py-3 text-center">Decision</th></tr></thead><tbody class="divide-y divide-slate-100">`;
             if(analysisData.length === 0) { html += `<tr><td colspan="6" class="px-6 py-4 text-center text-slate-400 italic">No data found.</td></tr>`; } else {
                 analysisData.slice(0, 50).forEach((data, index) => {
-                    // UPDATED DECISION LOGIC: Top 3 AND > 5 events for Red (High Monitoring)
-                    const isRed = index < 3 && data.totalEvents > 5;
-                    const decisionClass = isRed ? "bg-red-100 text-red-800 border border-red-200" : "bg-green-100 text-green-800 border border-green-200";
-                    const decisionText = isRed ? "High Monitoring" : "Monitor";
+                    const isTop5 = index < 5;
+                    const decisionClass = isTop5 
+                        ? "bg-red-100 text-red-800 border border-red-200" 
+                        : "bg-green-100 text-green-800 border border-green-200";
+                    const decisionText = isTop5 ? "High Monitoring" : "Monitor";
                     html += `<tr class="hover:bg-slate-50 border-b border-slate-100 cursor-pointer" onclick="closeModal(); loadProfile('${data.name.replace(/'/g, "\\'")}')"><td class="px-6 py-3 font-bold text-slate-700">${data.name}</td><td class="px-6 py-3"><span class="text-[10px] uppercase font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">${data.primaryIssue}</span></td><td class="px-6 py-3 text-center font-bold text-slate-800">${data.totalEvents}</td><td class="px-6 py-3 text-center text-slate-600">${data.onCallCount}</td><td class="px-6 py-3 text-center text-slate-600">${data.physCount}</td><td class="px-6 py-3 text-center"><span class="text-[10px] font-bold uppercase px-3 py-1 rounded-full ${decisionClass}">${decisionText}</span></td></tr>`;
                 });
             }
