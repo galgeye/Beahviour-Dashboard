@@ -455,7 +455,6 @@
                 const recentIncidents = s.incidents.filter(i => recentSet.has(i.date.setHours(0,0,0,0)));
                 if (recentIncidents.length === 0) return null;
                 
-                // Determine Primary Issue
                 const typeCounts = {};
                 recentIncidents.forEach(i => typeCounts[i.type] = (typeCounts[i.type] || 0) + 1);
                 const topIssue = Object.entries(typeCounts).sort((a,b)=>b[1]-a[1])[0][0];
@@ -464,22 +463,33 @@
                 return { ...s, recentCount: recentIncidents.length, topIssue, issueCat };
             }).filter(s => s !== null).sort((a,b) => b.recentCount - a.recentCount);
 
-            // 2. Categorize for Roles
-            const top5School = studentStats.slice(0, 5);
+            // Track assigned students to prevent duplicates across lists
+            const assignedStudents = new Set();
+
+            // 2. Categorize for Roles (Hierarchy applied)
             
+            // A. Assistant Heads (Top 5 School-Wide)
+            const top5School = studentStats.slice(0, 5);
+            top5School.forEach(s => assignedStudents.add(s.name));
+            
+            // B. Heads of Year (Top 3 per Year, > 5 events, NOT in SLT list)
             const years = ["7", "8", "9", "10", "11"];
             const topPerYear = {};
             years.forEach(y => {
-                // HEAD OF YEAR LOGIC: Top 3 per year, ONLY if > 5 events
-                topPerYear[y] = studentStats
-                    .filter(s => s.year === y && s.recentCount > 5)
+                const yearStudents = studentStats
+                    .filter(s => s.year === y && s.recentCount > 5 && !assignedStudents.has(s.name))
                     .slice(0, 3);
+                
+                topPerYear[y] = yearStudents;
+                yearStudents.forEach(s => assignedStudents.add(s.name)); // Mark as assigned
             });
 
+            // C. Form Tutors (Top 3 per Form, > 2 events, NOT in SLT or HOY lists)
             const forms = [...new Set(studentStats.map(s => s.reg))].sort();
             const formActions = forms.map(f => {
-                // FORM TUTOR LOGIC: Top 3 per form
-                const students = studentStats.filter(s => s.reg === f).slice(0, 3); 
+                const students = studentStats
+                    .filter(s => s.reg === f && s.recentCount > 2 && !assignedStudents.has(s.name)) 
+                    .slice(0, 3); 
                 return { form: f, students };
             }).filter(fa => fa.students.length > 0);
 
@@ -512,12 +522,12 @@
             // Section 2: Heads of Year
             doc.setFillColor(217, 119, 6); doc.rect(14, y, 182, 8, 'F'); // Gold
             doc.setTextColor(255); doc.setFontSize(12); doc.setFont(undefined, 'bold');
-            doc.text("Head of Year Actions (Top 3 Per Year with > 5 Events)", 16, y + 5.5);
+            doc.text("Head of Year Actions (Top 3 Per Year > 5 Events - Excluding SLT List)", 16, y + 5.5);
             y += 10;
 
             doc.setTextColor(0); doc.setFontSize(10);
             years.forEach(yr => {
-                if(topPerYear[yr].length === 0) return;
+                if(!topPerYear[yr] || topPerYear[yr].length === 0) return;
                 
                 // Check page break
                 if (y > 270) { doc.addPage(); y = 20; }
@@ -538,7 +548,7 @@
             doc.addPage(); y = 20;
             doc.setFillColor(5, 150, 105); doc.rect(14, y, 182, 8, 'F'); // Emerald
             doc.setTextColor(255); doc.setFontSize(12); doc.setFont(undefined, 'bold');
-            doc.text("Form Tutor Actions (Top 3 Per Form)", 16, y + 5.5);
+            doc.text("Form Tutor Actions (Top 3 > 2 Events - Excluding Red Forms)", 16, y + 5.5);
             y += 12;
 
             const tutorData = [];
