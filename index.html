@@ -67,12 +67,18 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div>
                 <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-                    <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     Pastoral Impact Dashboard
                 </h1>
                 <p class="text-xs text-yellow-400 font-bold tracking-wide ml-8">Diagnostic Profiling & Strategy Engine</p>
             </div>
             <div class="flex gap-3">
+                <!-- NEW: Google Drive Link Button -->
+                <a href="https://docs.google.com/spreadsheets/d/1c5dQUYjACIpG3kuHue6sspmyizYNveV12ZNZJW_Gh6o/edit?usp=drive_link" target="_blank" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-xs font-bold uppercase transition shadow-sm flex items-center gap-2 text-white border border-blue-400">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.01 1.485c2.082 0 3.754.02 4.943.02h.007c.53 0 .935.004 1.174.006.22.002.6.006.973.06a3.916 3.916 0 0 1 2.27 1.09 3.916 3.916 0 0 1 1.09 2.27c.054.373.058.753.06 .973.002.24.006.644.006 1.174v.007c0 1.19.02 2.861.02 4.943 0 2.082-.02 3.754-.02 4.943v.007c0 .53-.004.935-.006 1.174-.002.22-.006.6-.06.973a3.916 3.916 0 0 1-1.09 2.27 3.916 3.916 0 0 1-2.27 1.09c-.373.054-.753.058-.973.06-.24.002-.644-.006-1.174.006h-.007c-1.19 0-2.861-.02-4.943-.02-2.082 0-3.754.02-4.943.02h-.007c-.53 0-.935-.004-1.174-.006-.22-.002-.6-.006-.973-.06a3.916 3.916 0 0 1-2.27-1.09 3.916 3.916 0 0 1-1.09-2.27c-.054-.373-.058-.753-.06-.973-.002-.24-.006-.644-.006-1.174v-.007c0-1.19-.02-2.861-.02-4.943 0-2.082.02-3.754.02-4.943v-.007c0-.53.004-.935.006-1.174.002-.22.006-.6.06-.973a3.916 3.916 0 0 1 1.09-2.27 3.916 3.916 0 0 1 2.27-1.09c.373-.054.753-.058.973-.06.24-.002.644-.006 1.174-.006h.007ZM7.5 16.5l3-5.196 3 5.196H7.5Zm9-1.5L13.5 9.804l3-5.196 3 5.196-3 5.196ZM6 13.5l3-5.196L6 3.108 3 8.304l3 5.196Z"/></svg>
+                    Open Data Sheet
+                </a>
+
                 <button onclick="loadDemoData()" class="bg-emerald-800 hover:bg-emerald-700 px-4 py-2 rounded text-xs font-bold uppercase transition border border-emerald-600 text-yellow-50 shadow-sm">
                     Load Demo Data
                 </button>
@@ -186,14 +192,28 @@
                 <div>
                     <h2 class="text-xl font-bold flex items-center gap-2">
                         <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                        Weekly Action Generator
+                        Reporting & Action Tools
                     </h2>
-                    <p class="text-sm text-emerald-200 mt-1">Generate a targeted PDF action plan for SLT, Heads of Year, and Form Tutors based on the last 5 days.</p>
+                    <p class="text-sm text-emerald-200 mt-1">Generate targeted reports for staff, SLT, and tracking.</p>
                 </div>
-                <button onclick="generateActionPDF()" class="bg-yellow-500 hover:bg-yellow-600 text-emerald-900 font-bold py-3 px-6 rounded shadow-lg transition transform hover:scale-105 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Download Action Plan PDF
-                </button>
+                <div class="flex gap-2 flex-wrap">
+                    <button onclick="generateWeeklyBulletin()" class="bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold py-3 px-4 rounded shadow transition flex items-center gap-2 border border-emerald-500">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                        Weekly Bulletin
+                    </button>
+                    <button onclick="generateSLTReport()" class="bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold py-3 px-4 rounded shadow transition flex items-center gap-2 border border-purple-500">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        SLT Strategic Report
+                    </button>
+                    <button onclick="exportActionTracker()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold py-3 px-4 rounded shadow transition flex items-center gap-2 border border-blue-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Export Action Tracker (Excel)
+                    </button>
+                    <button onclick="generateActionPDF()" class="bg-yellow-500 hover:bg-yellow-600 text-emerald-900 text-xs font-bold py-3 px-4 rounded shadow transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Form Actions PDF
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -367,22 +387,22 @@
                 "Monitor Attendance (Target: 100%)"
             ]
         };
+        // ================= SECURITY FUNCTIONS =================
+        function unlockReports() {
+            const pass = document.getElementById('password-input').value;
+            const overlay = document.getElementById('locked-overlay');
+            const content = document.getElementById('action-content');
+            const error = document.getElementById('password-error');
 
-        const DIAGNOSIS_MAP = {
-            organisation: ['late', 'equipment', 'homework', 'uniform', 'planner', 'coat', 'jewellery', 'pe kit'],
-            disruption:   ['chat', 'talk', 'noise', 'disrupt', 'shout', 'call out', 'task', 'distract', 'eating', 'mobile', 'poor attitude'],
-            defiance:     ['defian', 'refus', 'rude', 'arguing', 'instruction', 'walk away', 'attitude', 'fail'],
-            safety:       ['fight', 'phys', 'aggress', 'violent', 'danger', 'safe', 'on call', 'truan', 'abscond', 'bully']
-        };
-        
-        const STRATEGIES = {
-            "Safety & Regulation": ["Immediate removal to safe space if escalated.", "Implement a 'Cool-off' card system.", "Risk assessment required for practical lessons.", "Seating plan: Keep near door/teacher desk.", "Restorative conversation post-event is critical."],
-            "Respect & Cooperation": ["Avoid public confrontation; use corridor conversations.", "Give 'take up time' after instructions.", "Use 'Maybe... and...' language to de-escalate.", "Check for underlying unmet needs (hunger, tiredness).", "Positive phone call home for small wins."],
-            "Engagement & Focus": ["Chunk tasks into 10-minute segments.", "Use non-verbal cues to redirect (tap on desk).", "Provide a fidget aid or movement break.", "Seat away from high-distraction peers.", "Use 'praise the prox' (praise students nearby)."],
-            "Organisation": ["Visual timetable on desk.", "Equipment check at door (provide quietly if missing).", "Scaffold homework tasks clearly.", "Regular locker/planner checks."],
-            "General Behaviour": ["Consistency with school policy.", "Build relationship through non-academic talk.", "Reinforce positive routines."],
-            "SEN_ADD": ["Pre-teach key vocabulary.", "Use dual coding (visuals + text).", "Check understanding: 'Tell me what you need to do'."]
-        };
+            if (pass === "C7j77emc") { // Updated Password
+                overlay.classList.add('hidden');
+                content.classList.remove('blur-sm');
+                error.classList.add('hidden');
+            } else {
+                error.classList.remove('hidden');
+                // Shake animation could be added here
+            }
+        }
 
         // ================= AI FUNCTIONS =================
         async function generateAIInsight(studentName) {
@@ -440,18 +460,150 @@
             }
         }
 
-        // ================= PDF ACTION PLAN GENERATION =================
-        async function generateActionPDF() {
+        // ================= NEW REPORTING FUNCTIONS =================
+        
+        // 1. Weekly Bulletin
+        function generateWeeklyBulletin() {
             if (!window.jspdf) { alert("PDF library not loaded."); return; }
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            const dateRangeText = recentActiveDates.length > 0 ? 
-                `${new Date(recentActiveDates[recentActiveDates.length-1]).toLocaleDateString()} - ${new Date(recentActiveDates[0]).toLocaleDateString()}` : 
-                "All Time";
+            const dateText = new Date().toLocaleDateString();
 
-            // 1. Calculate Recent Stats
+            doc.setFillColor(6, 78, 59); doc.rect(0, 0, 210, 25, 'F');
+            doc.setTextColor(255); doc.setFontSize(20); doc.setFont(undefined, 'bold');
+            doc.text("Weekly Staff Bulletin", 14, 17);
+            doc.setFontSize(10); doc.text(dateText, 170, 17);
+
+            // Mocked High Level Stats (Logic could be deeper)
+            let totalWeek = 0;
+            let onCalls = 0;
+            Object.values(studentData).forEach(s => {
+                const rec = s.incidents.filter(i => i.date >= new Date(recentActiveDates[recentActiveDates.length-1]));
+                totalWeek += rec.length;
+                onCalls += rec.filter(i => i.type.includes('On Call')).length;
+            });
+
+            let y = 40;
+            doc.setTextColor(0); doc.setFontSize(14); doc.text("The Big Picture", 14, y);
+            y+=8;
+            doc.setFontSize(11); doc.setFont(undefined, 'normal');
+            doc.text(`This week there were ${totalWeek} total incidents and ${onCalls} On Calls.`, 14, y);
+            y+=8;
+            doc.text(`Focus is needed on consistent recording of 'Equipment Missing'.`, 14, y);
+            y+=15;
+
+            // Hotspot from heatmap logic (simplified for bulletin)
+            let maxP = 0, maxD = 0, maxVal = 0;
+            [1,2,3,4,5,6].forEach(p => {
+                [1,2,3,4,5].forEach(d => {
+                    if(heatmapData[p][d] > maxVal) { maxVal = heatmapData[p][d]; maxP = p; maxD = d; }
+                });
+            });
+            const days = ["", "Mon", "Tue", "Wed", "Thu", "Fri"];
+            doc.setFont(undefined, 'bold'); doc.text(`🔥 Hotspot Alert: ${days[maxD]} Period ${maxP}`, 14, y);
+            y+=15;
+
+            // Strategy of the Week
+            doc.setFillColor(236, 253, 245); doc.rect(14, y, 182, 30, 'F');
+            doc.setTextColor(6, 78, 59); doc.setFontSize(12); doc.text("Strategy of the Week: 'Take Up Time'", 18, y+10);
+            doc.setFontSize(10); doc.setTextColor(0);
+            doc.text("Give an instruction and walk away. Allow the student time to process", 18, y+18);
+            doc.text("and comply without losing face. Do not hover.", 18, y+23);
+
+            doc.save(`Staff_Bulletin_${dateText}.pdf`);
+        }
+
+        // 2. SLT Strategic Report
+        function generateSLTReport() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Header
+            doc.setFontSize(18); doc.text("SLT Strategic Behaviour Overview", 14, 20);
+            doc.setFontSize(10); doc.text(`Generated: ${new Date().toLocaleDateString()}`, 14, 26);
+
+            // Data Prep
+            let totalOnCalls = 0;
+            let exclusionRiskCount = 0;
+            const deptCounts = {};
+            
+            Object.values(studentData).forEach(s => {
+                const rec = s.incidents.filter(i => i.date >= new Date(recentActiveDates[recentActiveDates.length-1]));
+                if (rec.length > 10) exclusionRiskCount++; // Arbitrary risk threshold
+                
+                rec.forEach(i => {
+                    if(i.type.includes('On Call')) totalOnCalls++;
+                    // Rough heuristic for department from existing data structure if available
+                    // If not, skip dept analysis or mock it
+                });
+            });
+
+            let y = 40;
+            doc.setFontSize(14); doc.text("1. High Level Metrics", 14, y);
+            y+=10;
+            doc.setFontSize(11);
+            doc.text(`Total On-Calls (This Week): ${totalOnCalls}`, 14, y); y+=8;
+            doc.text(`Students at Risk of Exclusion (>10 pts/week): ${exclusionRiskCount}`, 14, y); y+=15;
+
+            doc.setFontSize(14); doc.text("2. Strategic Actions & Updates", 14, y);
+            y+=10;
+            doc.setLineWidth(0.1); doc.rect(14, y, 180, 40);
+            doc.text("Enter agreed actions here during SLT meeting:", 16, y+8);
+            
+            doc.save(`SLT_Report_${new Date().toISOString().split('T')[0]}.pdf`);
+        }
+
+        // 3. Export Action Tracker (CSV)
+        function exportActionTracker() {
+            const studentStats = getStudentStatsForActions();
+            const assignedStudents = new Set();
+            const csvRows = [];
+            
+            // Headers
+            csvRows.push(["Date", "Role", "Student Name", "Form", "Incident Count", "Primary Issue", "Suggested Action", "Status", "Notes"]);
+            const dateStr = new Date().toLocaleDateString();
+
+            // Logic mirrors the Action PDF hierarchy
+            // A. SLT
+            studentStats.slice(0, 5).forEach(s => {
+                assignedStudents.add(s.name);
+                csvRows.push([dateStr, "Assistant Head", s.name, s.reg, s.recentCount, s.topIssue, "Review Exclusion Risk", "", ""]);
+            });
+
+            // B. HOY
+            const years = ["7", "8", "9", "10", "11"];
+            years.forEach(y => {
+                const yearStudents = studentStats.filter(s => s.year === y && s.recentCount > 5 && !assignedStudents.has(s.name)).slice(0, 3);
+                yearStudents.forEach(s => {
+                    assignedStudents.add(s.name);
+                    csvRows.push([dateStr, "Head of Year", s.name, s.reg, s.recentCount, s.topIssue, `Red Report - Target: ${suggestTarget(s.issueCat)}`, "", ""]);
+                });
+            });
+
+            // C. Tutors
+            const forms = [...new Set(studentStats.map(s => s.reg))].sort();
+            forms.forEach(f => {
+                const students = studentStats.filter(s => s.reg === f && s.recentCount > 2 && !assignedStudents.has(s.name)).slice(0, 3);
+                students.forEach(s => {
+                    csvRows.push([dateStr, "Form Tutor", s.name, s.reg, s.recentCount, s.topIssue, `Green Report - Target: ${suggestTarget(s.issueCat)}`, "", ""]);
+                });
+            });
+
+            // Create and Download CSV
+            const csvContent = "data:text/csv;charset=utf-8," + csvRows.map(e => e.join(",")).join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Action_Tracker_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Helper to reuse the filtering logic
+        function getStudentStatsForActions() {
             const recentSet = new Set(recentActiveDates);
-            const studentStats = Object.values(studentData).map(s => {
+            return Object.values(studentData).map(s => {
                 const recentIncidents = s.incidents.filter(i => recentSet.has(i.date.setHours(0,0,0,0)));
                 if (recentIncidents.length === 0) return null;
                 
@@ -462,6 +614,19 @@
 
                 return { ...s, recentCount: recentIncidents.length, topIssue, issueCat };
             }).filter(s => s !== null).sort((a,b) => b.recentCount - a.recentCount);
+        }
+
+        // ================= EXISTING PDF ACTION PLAN GENERATION =================
+        async function generateActionPDF() {
+            if (!window.jspdf) { alert("PDF library not loaded."); return; }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const dateRangeText = recentActiveDates.length > 0 ? 
+                `${new Date(recentActiveDates[recentActiveDates.length-1]).toLocaleDateString()} - ${new Date(recentActiveDates[0]).toLocaleDateString()}` : 
+                "All Time";
+
+            // 1. Calculate Recent Stats
+            const studentStats = getStudentStatsForActions(); // Reusing helper
 
             // Track assigned students to prevent duplicates across lists
             const assignedStudents = new Set();
